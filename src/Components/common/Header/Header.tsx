@@ -18,6 +18,7 @@ import { FiShoppingBag } from 'react-icons/fi';
 import { CheckoutModel } from '@/Components/CheckoutModel';
 import { FaChevronDown } from 'react-icons/fa';
 import { resetAccessToken } from '@/redux/authSlice';
+import { setOnboardingModalState } from '@/redux/OnboardingStateSlice';
 
 const Header: React.FC<{
 	setShowNavigationDrawer: Dispatch<SetStateAction<boolean>>;
@@ -52,6 +53,7 @@ const Header: React.FC<{
 					onClick={() => {
 						setShowNavigationDrawer(true);
 					}}
+					className="cursor-pointer"
 				/>
 			</div>
 
@@ -130,7 +132,7 @@ const Header: React.FC<{
 						<MenuButton
 							onClick={(e) => {
 								e.preventDefault();
-								// dispatch(setModalStateTrue());
+								dispatch(setOnboardingModalState(true));
 							}}
 							className="flex gap-3 justify-between cursor-pointer min-w-[100px] px-3 py-2 border-solid rounded-md border border-[#E0E0E0]"
 						>

@@ -5,13 +5,18 @@ import Image from 'next/image';
 import { FiBook } from 'react-icons/fi';
 import { FaBook } from 'react-icons/fa';
 import { Icon } from '@chakra-ui/react';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { setOnboardingModalState } from '@/redux/OnboardingStateSlice';
 // FiBook
 // FaBook
 const NavigationLinksCreator: React.FC<{
 	setShowNavigationDrawer: (value: boolean) => void;
 }> = ({ setShowNavigationDrawer }) => {
 	const router = useRouter();
-	// const dispatch = useDispatch();
+	const accessToken = useAppSelector(
+		(state) => state.authentication.accessToken
+	);
+	const dispatch = useAppDispatch();
 	const navigationLinksProps = [
 		{
 			name: 'Home',
@@ -49,23 +54,17 @@ const NavigationLinksCreator: React.FC<{
 							].join(' ')}
 							key={navigationLink.path}
 							onClick={() => {
-								void router.push(navigationLink.path);
-								setShowNavigationDrawer(false);
+								if (
+									navigationLink.path === '/library' &&
+									accessToken === null
+								) {
+									dispatch(setOnboardingModalState(true));
+								} else {
+									void router.push(navigationLink.path);
+									setShowNavigationDrawer(false);
+								}
 							}}
-							// onMouseEnter={() => handleMouseEnter(index)}
-							// onMouseLeave={() => handleMouseLeave(index)}
 						>
-							{/* {router.pathname === navigationLink.path ? (
-								<Icon
-									as={navigationLink.hoverStateIcon}
-									className={'text-black bg-orange-500 ml-4 mr-2 my-auto h-4 w-4 block'}
-								/>
-							) : (
-								<Icon
-									as={navigationLink.icon}
-									className={'text-black  ml-4 mr-2 my-auto h-4 w-4 block'}
-								/>
-							)} */}
 							{navigationLink.name}{' '}
 						</a>
 					);

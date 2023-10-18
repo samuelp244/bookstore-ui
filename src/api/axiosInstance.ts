@@ -37,10 +37,14 @@ axiosInstance.interceptors.response.use(
 				const accessToken = store.getState().authentication.accessToken;
 				const axiosConfig: InternalAxiosRequestConfig<any> = error.config;
 				if (error?.response?.status === 401) {
+					console.log(1);
 					if (accessToken === null) {
+						console.log(2);
 						store.dispatch(setOnboardingModalState(true));
-						throw error;
+						console.log(error);
+						throw error; // at this line
 					} else {
+						console.log(3);
 						const newAccessToken: string | null | undefined =
 							await getNewRefreshToken();
 						if (newAccessToken !== undefined && newAccessToken !== null) {

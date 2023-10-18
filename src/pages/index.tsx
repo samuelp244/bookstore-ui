@@ -18,7 +18,7 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<main>
-				<div className="p-6">
+				<div className="p-6 h-[95vh]">
 					<div className="mb-10">
 						<NewReleasesBookComponent />
 					</div>

@@ -14,7 +14,7 @@ import {
 import { useFormik } from 'formik';
 import axiosInstance from '@/api/axiosInstance';
 import { useDispatch } from 'react-redux';
-import { addAccessToken } from '@/redux/authSlice';
+import { addAccessToken, addUserData } from '@/redux/authSlice';
 import { AxiosError } from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,6 +47,7 @@ const SignInComponent = ({
 				const response = await axiosInstance.post('/auth/login', values);
 				if (response.status === 200) {
 					dispatch(addAccessToken(response.data));
+					dispatch(addUserData(response.data));
 					dispatch(setOnboardingModalState(false));
 				}
 			} catch (err: any) {
