@@ -1,6 +1,7 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { store } from '@/redux/store';
 import getNewRefreshToken from '@/api/getNewRefreshToken';
+import { setOnboardingModalState } from '@/redux/OnboardingStateSlice';
 
 const axiosInstance = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
@@ -33,15 +34,21 @@ axiosInstance.interceptors.response.use(
 	async function (error) {
 		if (error instanceof AxiosError) {
 			if (error.config !== undefined) {
+				const accessToken = store.getState().authentication.accessToken;
 				const axiosConfig: InternalAxiosRequestConfig<any> = error.config;
 				if (error?.response?.status === 401) {
-					const newAccessToken: string | null | undefined =
-						await getNewRefreshToken();
-					if (newAccessToken !== undefined && newAccessToken !== null) {
-						axiosConfig.headers.Authorization = `Bearer ${newAccessToken}`;
-						return await axiosInstance(axiosConfig);
-					} else {
+					if (accessToken === null) {
+						store.dispatch(setOnboardingModalState(true));
 						throw error;
+					} else {
+						const newAccessToken: string | null | undefined =
+							await getNewRefreshToken();
+						if (newAccessToken !== undefined && newAccessToken !== null) {
+							axiosConfig.headers.Authorization = `Bearer ${newAccessToken}`;
+							return await axiosInstance(axiosConfig);
+						} else {
+							throw error;
+						}
 					}
 				} else {
 					throw error;

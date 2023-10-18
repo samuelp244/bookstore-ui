@@ -18,6 +18,7 @@ import { addAccessToken } from '@/redux/authSlice';
 import { AxiosError } from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setOnboardingModalState } from '@/redux/OnboardingStateSlice';
 const SignInComponent = ({
 	setOnboardingState,
 }: {
@@ -46,6 +47,7 @@ const SignInComponent = ({
 				const response = await axiosInstance.post('/auth/login', values);
 				if (response.status === 200) {
 					dispatch(addAccessToken(response.data));
+					dispatch(setOnboardingModalState(false));
 				}
 			} catch (err: any) {
 				console.log(err.response.status);
