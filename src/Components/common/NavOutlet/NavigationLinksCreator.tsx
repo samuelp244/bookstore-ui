@@ -14,10 +14,16 @@ const NavigationLinksCreator: React.FC<{
 	// const dispatch = useDispatch();
 	const navigationLinksProps = [
 		{
-			name: 'Browse',
+			name: 'Home',
 			icon: FiBook,
 			hoverStateIcon: FaBook,
 			path: '/',
+		},
+		{
+			name: 'Browse',
+			icon: FiBook,
+			hoverStateIcon: FaBook,
+			path: '/browse',
 		},
 		{
 			name: 'Library',

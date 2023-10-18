@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 	// timeout: 1000,
 });
 
-// axiosInstance.defaults.withCredentials = true;
+axiosInstance.defaults.withCredentials = true;
 axiosInstance.defaults.headers.common.crossDomain = true;
 axiosInstance.defaults.headers.common['Access-Control-Max-Age'] = '600';
 axiosInstance.interceptors.request.use(

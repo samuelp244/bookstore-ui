@@ -9,6 +9,7 @@ import getNewRefreshToken from '@/api/getNewRefreshToken';
 import Link from 'next/link';
 import { Drawer, Spinner } from '@chakra-ui/react';
 import Header from '../Header/Header';
+import { OnboardingModal } from '@/Components/OnboardingModal';
 
 // import dayjs from 'dayjs';
 // import SignInAndSignUpModal from '@/components/common/OnboardingModalV2';
@@ -97,7 +98,7 @@ const NavOutlet: React.FC<NavigationComponentWithOutletProps> = ({
 					<div className={'col-span-12 xl:col-span-10'}>
 						<div className={'h-full'}>
 							<Header setShowNavigationDrawer={setShowNavigationDrawer} />
-							<div className={'h-screen bg-[#ebeef5]'}>{children}</div>
+							<div className={' bg-[#ebeef5]'}>{children}</div>
 						</div>
 					</div>
 				</div>
@@ -106,7 +107,7 @@ const NavOutlet: React.FC<NavigationComponentWithOutletProps> = ({
 					<Spinner className="" />
 				</div>
 			)}
-			{/* <SignInAndSignUpModal /> */}
+			<OnboardingModal />
 		</>
 	);
 };

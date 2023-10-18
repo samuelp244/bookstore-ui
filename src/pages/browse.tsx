@@ -1,8 +1,8 @@
-import { LibraryList } from '@/Components/LibraryPage';
+import { BrowseList } from '@/Components/BrowsePage';
 import Head from 'next/head';
 import React from 'react';
 
-const libraryPage = () => {
+const browse = () => {
 	return (
 		<>
 			<Head>
@@ -13,11 +13,11 @@ const libraryPage = () => {
 			</Head>
 			<main>
 				<div className="p-6">
-					<LibraryList />
+					<BrowseList />
 				</div>
 			</main>
 		</>
 	);
 };
 
-export default libraryPage;
+export default browse;

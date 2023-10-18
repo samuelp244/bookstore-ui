@@ -11,12 +11,13 @@ import React, {
 } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { BsArrowRight } from 'react-icons/bs';
+import { useRouter } from 'next/router';
 
 const HomeBooksComponent = ({ sortBy }: { sortBy: 'ratings' | 'release' }) => {
 	const [booksList, setBooksList] = useState<BookType[]>();
 	const scrollContainerRef = useRef<HTMLDivElement | null>(null);
 	const [scrollDistance, setScrollDistance] = useState(500);
-
+	const router = useRouter();
 	const calculateScrollDistance = useCallback(() => {
 		if (scrollContainerRef.current) {
 			const screenWidth = window.innerWidth;
@@ -26,11 +27,13 @@ const HomeBooksComponent = ({ sortBy }: { sortBy: 'ratings' | 'release' }) => {
 			setScrollDistance(newScrollDistance);
 		}
 	}, []);
-
-	useLayoutEffect(() => {
+	useEffect(() => {
 		window.addEventListener('resize', calculateScrollDistance);
-		calculateScrollDistance(); // Calculate the initial scroll distance
-		return () => window.removeEventListener('resize', calculateScrollDistance);
+		calculateScrollDistance();
+
+		return () => {
+			window.removeEventListener('resize', calculateScrollDistance);
+		};
 	}, [calculateScrollDistance]);
 
 	useEffect(() => {
@@ -66,6 +69,9 @@ const HomeBooksComponent = ({ sortBy }: { sortBy: 'ratings' | 'release' }) => {
 					fontSize="xs"
 					size={'sm'}
 					rightIcon={<Icon as={BsArrowRight} />}
+					onClick={() => {
+						router.push('/browse');
+					}}
 				>
 					Explore more
 				</Button>
