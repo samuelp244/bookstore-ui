@@ -1,13 +1,13 @@
 import axios, { AxiosError, type InternalAxiosRequestConfig } from 'axios';
 import { store } from '@/redux/store';
-import getNewRefreshToken from '@/apis/getNewRefreshToken';
+import getNewRefreshToken from '@/api/getNewRefreshToken';
 
 const axiosInstance = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_BACKEND_URL,
 	// timeout: 1000,
 });
 
-axiosInstance.defaults.withCredentials = true;
+// axiosInstance.defaults.withCredentials = true;
 axiosInstance.defaults.headers.common.crossDomain = true;
 axiosInstance.defaults.headers.common['Access-Control-Max-Age'] = '600';
 axiosInstance.interceptors.request.use(
