@@ -63,7 +63,7 @@ const SignUpComponent = ({
 		onSubmit: async (values) => {
 			try {
 				const response = await axiosInstance.post('/auth/register', values);
-				if (response.status === 200) {
+				if (response.status === 201) {
 					dispatch(addAccessToken(response.data));
 					dispatch(addUserData(response.data));
 					dispatch(setOnboardingModalState(false));
@@ -165,7 +165,7 @@ const SignUpComponent = ({
 					<Button
 						colorScheme="blue"
 						type="submit"
-						isLoading={formik.isSubmitting}
+						// isLoading={formik.isSubmitting}
 					>
 						Sign Up
 					</Button>

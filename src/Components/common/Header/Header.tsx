@@ -25,9 +25,7 @@ const Header: React.FC<{
 }> = ({ setShowNavigationDrawer }) => {
 	const authentication = useAppSelector((state) => state.authentication);
 	const checkoutCart = useAppSelector((state) => state.checkoutCart);
-	// const notification = useNotification();
 	const dispatch = useDispatch();
-	// const navigate = useNavigate();
 	const router = useRouter();
 	const [checkoutModal, setCheckoutModel] = useState(false);
 	const HandleSignOut = async (): Promise<void> => {
@@ -58,13 +56,6 @@ const Header: React.FC<{
 			</div>
 
 			<div className={'flex items-center gap-4'}>
-				{/* <a
-				onClick={(e) => {
-					e.preventDefault();
-				}}
-			>
-				<Image className="cursor-pointer" src={notificationIcon} alt="" />
-			</a> */}
 				<div>
 					{checkoutCart.booksCart.length > 0 ? (
 						<Avatar

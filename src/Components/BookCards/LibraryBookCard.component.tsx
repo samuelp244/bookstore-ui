@@ -49,7 +49,7 @@ const LibraryBookCard = ({
 				`/books/user/delete/${bookData.bookID}`
 			);
 			if (response.status === 200) {
-				onClose(); // Close the modal when deletion is successful.
+				onClose();
 				await updateUserLibraryData();
 			}
 		} catch (error) {
@@ -77,7 +77,7 @@ const LibraryBookCard = ({
 			<Button
 				leftIcon={<Icon as={RiDeleteBinLine} />}
 				colorScheme="red"
-				onClick={onOpen} // Open the confirmation modal
+				onClick={onOpen}
 				className="w-full"
 			/>
 			<ToastContainer />
