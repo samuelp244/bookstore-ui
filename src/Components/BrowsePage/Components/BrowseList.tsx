@@ -43,7 +43,7 @@ const BrowseList = () => {
 				</div>
 			) : (
 				<>
-					<div className="flex justify-between px-2">
+					<div className=" max-sm:flex-col sm:flex justify-between px-2">
 						<div className="sm:w-1/2">
 							<InputGroup>
 								<InputLeftElement pointerEvents="none">
@@ -59,7 +59,7 @@ const BrowseList = () => {
 							</InputGroup>
 						</div>
 
-						<div className="flex gap-2 ">
+						<div className="flex gap-2 max-sm:justify-end max-sm:mt-2">
 							<p className="my-auto pb-1.5">Limit :</p>
 							<div>
 								<Select
