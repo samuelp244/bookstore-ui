@@ -159,7 +159,13 @@ const SignUpComponent = ({
 				</ModalBody>
 
 				<ModalFooter>
-					<Button variant="ghost" mr={3} onClick={() => {}}>
+					<Button
+						variant="ghost"
+						mr={3}
+						onClick={() => {
+							dispatch(setOnboardingModalState(false));
+						}}
+					>
 						Close
 					</Button>
 					<Button
