@@ -37,45 +37,45 @@ const BrowseList = () => {
 	}, [limit, page, searchQuery]);
 	return (
 		<div className="p-4 bg-white rounded-2xl">
+			<div className=" max-sm:flex-col sm:flex justify-between px-2">
+				<div className="sm:w-1/2">
+					<InputGroup>
+						<InputLeftElement pointerEvents="none">
+							<Icon as={IoSearchOutline} />
+						</InputLeftElement>
+						<Input
+							placeholder="Search"
+							value={searchQuery}
+							onChange={(e) => {
+								setSearchQuery(e.target.value);
+							}}
+						/>
+					</InputGroup>
+				</div>
+
+				<div className="flex gap-2 max-sm:justify-end max-sm:mt-2">
+					<p className="my-auto pb-1.5">Limit :</p>
+					<div>
+						<Select
+							value={limit}
+							onChange={(e) => {
+								setLimit(e.target.value);
+							}}
+							size="sm"
+						>
+							<option value="15">15</option>
+							<option value="30">30</option>
+							<option value="50">50</option>
+						</Select>
+					</div>
+				</div>
+			</div>
 			{loading ? (
 				<div className="h-[85vh] flex justify-center items-center">
 					<Spinner size="lg" />
 				</div>
 			) : (
 				<>
-					<div className=" max-sm:flex-col sm:flex justify-between px-2">
-						<div className="sm:w-1/2">
-							<InputGroup>
-								<InputLeftElement pointerEvents="none">
-									<Icon as={IoSearchOutline} />
-								</InputLeftElement>
-								<Input
-									placeholder="Search"
-									value={searchQuery}
-									onChange={(e) => {
-										setSearchQuery(e.target.value);
-									}}
-								/>
-							</InputGroup>
-						</div>
-
-						<div className="flex gap-2 max-sm:justify-end max-sm:mt-2">
-							<p className="my-auto pb-1.5">Limit :</p>
-							<div>
-								<Select
-									value={limit}
-									onChange={(e) => {
-										setLimit(e.target.value);
-									}}
-									size="sm"
-								>
-									<option value="15">15</option>
-									<option value="30">30</option>
-									<option value="50">50</option>
-								</Select>
-							</div>
-						</div>
-					</div>
 					<div className="mt-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4">
 						{booksList?.map((book, index) => {
 							return (
