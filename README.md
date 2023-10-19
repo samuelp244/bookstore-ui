@@ -1,38 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Project Documentation
+
+This project is developed using Next.js as the front-end framework and Chakra UI as the primary UI library. Below are the steps to set up the project locally on your development environment.
+
+## Prerequisites
+
+Before setting up the project, make sure you have the following prerequisites installed on your system:
+
+1. **Node.js**: Download and install Node.js from [https://nodejs.org/](https://nodejs.org/).
+2. **npm**: npm is typically included with Node.js installation, so you don't need to install it separately.
+
+Additionally, for working with TypeScript, ensure that you have TypeScript and ts-node installed on your system.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to set up the project locally:
+
+1. **Clone the Repository**: Begin by cloning the project repository to your local machine.
+
+    ```bash
+    git clone https://github.com/samuelp244/bookstore-ui.git
+    ```
+
+2. **Install Dependencies**: Navigate to the project directory and install the required dependencies using npm.
+
+    ```bash
+    cd bookstore-ui
+    npm install
+    ```
+
+3. **Create Environment File**: Create a `.env` file at the root of your project directory. You can copy the `.env.example` file if available and customize it for your specific environment.
+
+4. **Add Backend URL**: In the `.env` file, add the URL of your backend server. For example:
+
+    ```plaintext
+    NEXT_PUBLIC_BACKEND_URL=http://your-backend-url
+    ```
+
+## Development
+
+To start the development server, run the following command:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
